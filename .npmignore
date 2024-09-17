@@ -1,0 +1,6 @@
+src
+node_modules
+.gitignore
+.npmignore
+eslint.config.mjs
+tsconfig.json
