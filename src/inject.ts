@@ -19,5 +19,15 @@ export function inject() {
       init: analytics.init.bind(analytics),
       pageview: analytics.pageview.bind(analytics),
     } as typeof analytics & { track: typeof track };
+
+    document.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      const eventName =
+        target.getAttribute("data-rustalytics") ||
+        target.getAttribute("data-event");
+      if (eventName) {
+        track(eventName);
+      }
+    });
   }
 }
